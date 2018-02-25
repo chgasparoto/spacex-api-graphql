@@ -16,15 +16,7 @@ const RootQueryType = new GraphQLObjectType({
       args: {
         id: { type: GraphQLString },
       },
-      resolve: (root, args) => {
-        const { id } = args;
-
-        if (id) {
-          return fetchRockets(args.id);
-        }
-
-        return fetchRockets();
-      },
+      resolve: (root, args) => fetchRockets(args.id ? args.id : null),
     },
     company: {
       type: CompanyType,
