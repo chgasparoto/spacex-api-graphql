@@ -2,7 +2,7 @@ const graphqlTester = require('graphql-tester');
 
 const { tester } = graphqlTester;
 const test = tester({
-  url: 'http://localhost:5000',
+  url: 'http://localhost:5000/graphql',
 });
 
 describe('Company', () => {
