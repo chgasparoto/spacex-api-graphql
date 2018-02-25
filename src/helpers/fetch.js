@@ -12,12 +12,21 @@ const fetchResponseByURL = (relativeURL) => {
 
 const fetchRockets = (id = null) => {
   const url = ['rockets'];
+  const rocketsList = [];
 
   if (id) {
     url.push(id);
   }
 
-  return fetchResponseByURL(url.join('/'));
+  const rockets = fetchResponseByURL(url.join('/'));
+
+  // Forces the return to be an array.
+  if (id) {
+    rocketsList.push(rockets);
+    return rocketsList;
+  }
+
+  return rockets;
 };
 
 const fetchCompany = () => fetchResponseByURL('info');
