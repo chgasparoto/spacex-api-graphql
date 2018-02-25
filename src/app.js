@@ -29,12 +29,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, '0.0.0.0', () => {
-  app.emit('ready');
-
-  if (process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'test') {
-    console.log(`GraphQL Server running at http://localhost:${PORT}`);
-  }
+app.listen(PORT, () => {
+  console.log(`GraphQL Server running at port ${PORT}`);
 });
 
 module.exports = app;
