@@ -2,7 +2,7 @@ const graphqlTester = require('graphql-tester');
 
 const { tester } = graphqlTester;
 const test = tester({
-  url: 'http://localhost:5000/graphql',
+  url: 'https://stark-brushlands-54184.herokuapp.com/graphql',
 });
 
 describe('Company', () => {
@@ -17,6 +17,13 @@ describe('Company', () => {
       .then((res) => {
         expect(res.status).toBe(200);
         expect(res.success).toBe(true);
+        expect(res.data).toMatchObject({
+          company: {
+            name: 'SpaceX',
+            ceo: 'Elon Musk',
+            employees: 7000,
+          },
+        });
         done();
       });
   });
