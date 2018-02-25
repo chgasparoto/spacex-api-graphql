@@ -2,6 +2,9 @@
 
 :rocket: A simple GraphQL Server for SpaceX data - https://github.com/r-spacex/SpaceX-API
 
+[![travis build](https://img.shields.io/travis/chgasparoto/spacex-graphql-server.svg?style=flat-square)](https://travis-ci.org/chgasparoto/spacex-graphql-server)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/chgasparoto/spacex-graphql-server/blob/master/LICENSE)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
