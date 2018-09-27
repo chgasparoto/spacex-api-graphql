@@ -1,14 +1,25 @@
+const Dataloader = require('dataloader');
 const express = require('express');
 const expressGraphQL = require('express-graphql');
 const cors = require('cors');
 const schema = require('./schema/schema');
+const { fetchRockets } = require('./helpers/fetch');
 
 const app = express();
 
-app.use('/graphql', cors(), expressGraphQL({
-  schema,
-  graphiql: true,
-  pretty: true,
+app.use('/graphql', cors(), expressGraphQL(() => {
+  const cacheMap = new Map();
+  const rocketLoader = new Dataloader(keys => Promise.all(keys.map(fetchRockets)), { cacheMap });
+
+  const loaders = {
+    rocket: rocketLoader,
+  };
+
+  return {
+    context: { loaders },
+    grapiql: true,
+    schema,
+  };
 }));
 
 // 404 Error Handler

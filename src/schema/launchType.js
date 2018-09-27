@@ -1,6 +1,5 @@
 const graphql = require('graphql');
 const RocketType = require('./rocketType');
-const { fetchRockets } = require('../helpers/fetch');
 
 const {
   GraphQLObjectType,
@@ -35,8 +34,8 @@ const LaunchType = new GraphQLObjectType({
     },
     rocket: {
       type: RocketType,
-      resolve: async (launch) => {
-        const rocket = await fetchRockets(launch.rocket.rocket_id);
+      resolve: async (launch, args, { loaders }) => {
+        const rocket = await loaders.rocket.load(launch.rocket.rocket_id);
         return rocket[0];
       },
     },
