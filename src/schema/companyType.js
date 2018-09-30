@@ -14,11 +14,10 @@ const CompanyType = new GraphQLObjectType({
     founded: { type: GraphQLInt },
     vehicles: { type: GraphQLInt },
     employees: { type: GraphQLInt },
-    valuation: { type: GraphQLInt },
+    valuation: { type: GraphQLString },
     headquarters: {
       type: GraphQLString,
-      resolve: company =>
-        `${company.headquarters.address} - 
+      resolve: company => `${company.headquarters.address} - 
         ${company.headquarters.city} - 
         ${company.headquarters.state}`,
     },

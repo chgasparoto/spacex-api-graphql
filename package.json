@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon src/app.js",
-    "test": "NODE_ENV=test jest -i --forceExit && eslint \"**/*.js\"",
+    "test": "NODE_ENV=test jest -i --forceExit --detectOpenHandles",
     "lint": "eslint \"**/*.js\"",
     "start": "node src/app.js"
   },
@@ -37,6 +37,8 @@
     "eslint-plugin-react": "7.11.1",
     "graphql-tester": "0.0.5",
     "jest": "23.6.0",
+    "jest-chain": "1.0.3",
+    "jest-extended": "0.10.0",
     "jest-tobetype": "1.2.0",
     "nodemon": "^1.18.4"
   },
@@ -50,6 +52,7 @@
   },
   "jest": {
     "bail": true,
+    "setupTestFrameworkScriptFile": "./testSetup.js",
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",
